@@ -1,0 +1,9 @@
+{% load static %}
+<div class="sidebar-item search-form">
+    <h3 class="sidebar-title">Search</h3>
+    <form class="mt-3" method="get" action="{% url 'Blog:search' %}">
+      <input type="text" name="s">
+      <button type="submit"><i class="bi bi-search"></i></button>
+    </form>
+  </div>
+  

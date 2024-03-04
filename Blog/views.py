@@ -48,14 +48,18 @@ def blog_details(request, pid):
      now = timezone.now()
      all_posts = Post.objects.filter(status = 1, published_date__lte = now)
      current_post = get_object_or_404(all_posts, pk = pid)
-    #  if not current_post.login_require:
-     comments = Comment.objects.filter(post = current_post.id, approved = True)
-     context = {'post': current_post, 'comments': comments, 'form': form}
-     return render(request, 'blog/blog-details.html', context)
-    #  else:
-            # return HttpResponseRedirect(reverse/('accounts:login'))
-
-    # return render(request,'blog/blog-details.html',)
+     if not current_post.login_require:
+        comments = Comment.objects.filter(post = current_post.id, approved = True)
+        context = {'post': current_post, 'comments': comments, 'form': form}
+        return render(request, 'blog/blog-single.html', context)
+    
+     else:
+        if request.user.is_authenticated:
+            comments = Comment.objects.filter(post = current_post.id, approved = True)
+            context = {'post': current_post, 'comments': comments, 'form': form}
+            return render(request, 'blog/blog-single.html', context)
+        else:
+            return HttpResponseRedirect(reverse('accounts:login'))
 
 
 

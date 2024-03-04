@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'sweetify',
     'django.contrib.humanize',
+    'accounts',
 ]   
 
 MIDDLEWARE = [
@@ -178,3 +179,16 @@ SUMMERNOTE_CONFIG = {
 }
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.CustomAuthenticationBackend',
+
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mohammadseyfipc@gmail.com'
+EMAIL_HOST_PASSWORD = 'pffxkusbmsqntchz'

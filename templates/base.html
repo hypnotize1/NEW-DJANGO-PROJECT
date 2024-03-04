@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +39,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -53,7 +54,7 @@
                 <!-- <img src="{% static 'img/logo.png' %}" alt=""> -->
                 <h1>UpConstruction<span>.</span></h1>
             </a>
-
+            
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
             <nav id="navbar" class="navbar">
@@ -62,23 +63,18 @@
                     <li><a href="{% url 'website:about' %}">About</a></li>
                     <li><a href="{% url 'Projects:index' %}">Projects</a></li>
                     <li><a href="{% url 'Blog:home' %}">Blog</a></li>
-                    <li class="dropdown"><a href="#"><span>Dropdown</span> <i
+                    <li class="dropdown"><a href="#"><span>Accounts</span> <i
                                 class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="#">Dropdown 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                                        class="bi bi-chevron-down dropdown-indicator"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Dropdown 1</a></li>
-                                    <li><a href="#">Deep Dropdown 2</a></li>
-                                    <li><a href="#">Deep Dropdown 3</a></li>
-                                    <li><a href="#">Deep Dropdown 4</a></li>
-                                    <li><a href="#">Deep Dropdown 5</a></li>
-                                </ul>
+                                        {% if request.user.is_authenticated %}
+                                        <li><a>Logged in as {{request.user.username}}</a></li>
+                                        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                                        <li><a href="{% url 'accounts:signup' %}">Sign-up</a></li>
+                                        {% endif %}
+
                             </li>
-                            <li><a href="#">Dropdown 2</a></li>
-                            <li><a href="#">Dropdown 3</a></li>
-                            <li><a href="#">Dropdown 4</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'website:contact' %}">Contact</a></li>
@@ -206,6 +202,8 @@
 
     <!-- Template Main JS File -->
     <script src="{% static 'js/main.js' %}"></script>
+{% load sweetify %}
+{% sweetify %}
 
 </body>
 

@@ -2291,6 +2291,13 @@ section {
 .blog .sidebar {
   padding: 30px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30px; /* عرض ثابت یا درصدی مناسب */
+  height: 100%; /* یک ارتفاع مناسب */
+  background-color: #f5f6f7;
+  id
 }
 
 .blog .sidebar .sidebar-title {

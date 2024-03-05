@@ -51,7 +51,7 @@ def blog_details(request, pid):
      if not current_post.login_require:
         comments = Comment.objects.filter(post = current_post.id, approved = True)
         context = {'post': current_post, 'comments': comments, 'form': form}
-        return render(request, 'blog/blog-single.html', context)
+        return render(request, 'blog/blog-details.html', context)
     
      else:
         if request.user.is_authenticated:

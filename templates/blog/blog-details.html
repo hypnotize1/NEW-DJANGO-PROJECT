@@ -4,7 +4,6 @@
 {% block content %}
 {% load humanize %}
 
-
 <main id="main">
 
   <!-- ======= Breadcrumbs ======= -->
@@ -118,7 +117,7 @@
 
               <h4>Leave a Reply</h4>
               <p>Your email address will not be published. Required fields are marked * </p>
-              <form action="{% url 'Blog:details' pid=post.id %}" method="post">
+              <form action="{% url 'Blog:details' pid=post.id %}" method="post"">
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-md-6 form-group">
@@ -135,7 +134,7 @@
                 </div>
                 <div class="row">
                   <div class="col form-group">
-                    <textarea name="message" class="form-control" placeholder="Your Comment*"></textarea>
+                    <textarea name="message" type="text" class="form-control" placeholder="Your message*"></textarea>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Post Comment</button>

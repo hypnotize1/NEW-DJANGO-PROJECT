@@ -41,6 +41,8 @@ def blog_details(request, pid):
             form.save()
             sweetify.success(request, 'Submitted successfully!')
         else:
+            e = form.errors
+            print(f"Is not valid because {e}")
             sweetify.error(request, 'Submission failed!')
      else:
         form = CommentForm()
@@ -57,7 +59,7 @@ def blog_details(request, pid):
         if request.user.is_authenticated:
             comments = Comment.objects.filter(post = current_post.id, approved = True)
             context = {'post': current_post, 'comments': comments, 'form': form}
-            return render(request, 'blog/blog-single.html', context)
+            return render(request, 'blog/blog-details.html', context)
         else:
             return HttpResponseRedirect(reverse('accounts:login'))
 

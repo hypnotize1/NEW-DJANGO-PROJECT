@@ -107,8 +107,8 @@
                     {{comment.message}}
                   </p>
                 </div>
-                {% endfor %}
               </div>
+              {% endfor %}
             </div>
 
             <!-- End comment #1 -->
@@ -123,6 +123,9 @@
                   <div class="col-md-6 form-group">
                     <input name="name" type="text" class="form-control" placeholder="Your Name*">
                   </div>
+                <div class="row">
+                  <input type="hidden" name="post" value={{post.id}}>
+                </div>
                   <div class="col-md-6 form-group">
                     <input name="email" type="email" class="form-control" placeholder="Your Email*">
                   </div>
@@ -138,7 +141,7 @@
                   </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Post Comment</button>
-
+                  
               </form>
             </div>
           </div>

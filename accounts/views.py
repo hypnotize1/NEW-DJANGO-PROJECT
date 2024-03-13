@@ -21,7 +21,7 @@ def login_view(request):
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     login(request, user)
-                    sweetify.success(request, 'Login successful!')
+                    sweetify.success(request, 'Login successfully!')
                     return redirect('/')
             else:
                 sweetify.error(request, 'username or password is invalid, please try again!')
@@ -36,7 +36,7 @@ def login_view(request):
 @login_required
 def logout_view(request):
     logout(request)
-    sweetify.success(request, 'You have been logged out successfully!')
+    sweetify.success(request, 'You logged out successfully!')
     return redirect('/')  
 
 

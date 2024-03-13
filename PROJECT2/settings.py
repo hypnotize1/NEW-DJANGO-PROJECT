@@ -39,13 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Blog.apps.BlogConfig',
+    'django.contrib.sites',
     'Projects.apps.ProjectsConfig',
     'website.apps.WebsiteConfig',
     'taggit',
+    'django.contrib.sitemaps',
     'django_summernote',
     'sweetify',
     'django.contrib.humanize',
+    'django_extensions',
     'accounts',
+    'phonenumber_field',
+    'robots',
+    'debug_toolbar',
+
 ]   
 
 MIDDLEWARE = [
@@ -56,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = 'PROJECT2.urls'
@@ -85,7 +94,7 @@ WSGI_APPLICATION = 'PROJECT2.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'Work',
+		'NAME': 'WORK',
 		'USER': 'root',
 		'PASSWORD': 'my@Newpassw0rd',
 		'HOST':'localhost',
@@ -194,8 +203,19 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mohammadseyfipc@gmail.com'
 EMAIL_HOST_PASSWORD = 'pffxkusbmsqntchz'
 
+SITE_ID = 2
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+ROBOTS_USE_SITEMAP = False
+ROBOTS_USE_HOST = False
 
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+DEFAULT_PROJECT_IMAGE = 'projects/default.jpg'  # Path to your default image

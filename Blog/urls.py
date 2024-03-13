@@ -12,6 +12,4 @@ urlpatterns = [
     path('tags/<str:tag_name>', blog_view, name = 'tags'),
     path('search/', blog_search, name = 'search'),
 
-
-
 ]

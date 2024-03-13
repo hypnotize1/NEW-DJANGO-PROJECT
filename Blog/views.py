@@ -41,8 +41,6 @@ def blog_details(request, pid):
             form.save()
             sweetify.success(request, 'Submitted successfully!')
         else:
-            e = form.errors
-            print(f"Is not valid because {e}")
             sweetify.error(request, 'Submission failed!')
      else:
         form = CommentForm()

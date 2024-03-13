@@ -6,6 +6,6 @@ app_name = 'Projects'
 urlpatterns = [
 
     path('', projects_view, name = 'index'),
-    path('details/', projects_detail, name = 'details'),
-
+    path('<int:pid>', projects_detail, name = 'details'),
+    
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from Blog.models import Post
-from website.forms import contact_form
+from website.forms import contact_form, QuoteForm
 import sweetify
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -8,8 +8,19 @@ from django.shortcuts import redirect
 
 # Create your views here.
 def index_view(request):
-    posts = Post.objects.filter(status = 1)
-    return render(request, 'web/index.html',{'posts': posts})
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            sweetify.success(request, 'Quote sent!')
+            # Redirect to a success page or do something else
+        else:
+            sweetify.error(request, 'Quote didnt send!')
+    else:
+        form = QuoteForm()
+        
+    context = {'form':form}
+    return render(request, 'web/index.html', context)
 
 
 def about_view(request):

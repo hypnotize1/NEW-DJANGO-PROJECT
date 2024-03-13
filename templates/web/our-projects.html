@@ -1,0 +1,49 @@
+{% load static %}
+
+<section id="projects" class="projects">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+            <h2>Our Projects</h2>
+            <p>The consequence of the freedom is to be assumed, it is indeed a pleasure, and the duties of the enemy
+                are those who either run away from accusing the architect or those who are distinguished</p>
+        </div>
+
+        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
+            data-portfolio-sort="original-order">
+
+            <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+                <li data-filter="*" class="filter-active">All</li>
+                {% for mode in modes %}
+                <li data-filter=".filter-remodeling">{{ mode.name }}</li>
+                {% endfor %}
+
+            </ul><!-- End Projects Filters -->
+
+            <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                {% for project in projects %}
+                <div class="col-lg-4 col-md-6 portfolio-item filter-{{ project.mode.name }}">
+                    <div class="portfolio-content h-100">
+                        {% with project.images.all|first as image %}
+                        <img src="{{ image.image.url }}" class="img-fluid" alt="">
+                        {% endwith %}
+                        <div class="portfolio-info">
+                            <h4>{{ project.mode.name }}</h4>
+                            <p>{{ project.title }}</p>
+                            <a href="{{ image.image.url }}" title="{{ project.mode.name }}"
+                                data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i
+                                    class="bi bi-zoom-in"></i></a>
+                            <a href="{% url 'Projects:details' pid=project.id %}" class="details-link"><i
+                                    class="bi bi-link-45deg"></i></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div><!-- End Projects Item -->
+
+
+            </div><!-- End Projects Container -->
+
+        </div>
+
+    </div>
+</section><!-- End Our Projects Section -->

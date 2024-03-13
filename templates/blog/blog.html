@@ -72,9 +72,9 @@
 
           {% for i in posts.paginator.page_range %}
           {% if posts.number == i %}
-          <li class="active"><a href="?page={{ i }}">{{ i }}</a></li>
+          <li class="active"><a href="?page={{i}}">{{i}}</a></li>
           {% else %}
-          <li><a href="?page={{ i }}">{{ i }}</a></li>
+          <li><a href="?page={{i}}">{{i}}</a></li>
           {% endif %}
           {% endfor %}
 
